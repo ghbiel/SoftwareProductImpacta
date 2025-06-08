@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcar agendamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='icon.png') }}" sizes="16x16">
+
+</head>
+
+<body>
+
+    <main class="w-100 vh-100 d-flex justify-content-center">
+        <form class="form-consulta" action="/agendar" method="POST">
+            <div class="container my-5 area-escrita">
+                <div class="card-body text-left bg-light">
+                    <div class=" d-flex justify-content-center align-items-center">
+                        <a href="javascript:history.back()" class="btn btn-link text-muted fs-2 me-3">
+                            <i class="bi bi-arrow-left-circle"></i>
+                        </a>
+                        <h4 style="color: #4e024e; margin-bottom: 0;">Agendamento de Consulta</h4>
+                    </div>
+                    <div class="my-4">
+                        <label for="nome" class="form-label">Nome do animal</label>
+                        <input type="text" class="form-control" id="nome_animal" name="nome_animal"
+                            placeholder="Digite o nome do animal">
+                    </div>
+                    <div class="my-4">
+                        <label for="especie_animal" class="form-label">Espécie do animal</label>
+                        <select class="form-select" id="especie_animal" name="especie_animal">
+                            <option selected disabled hidden class="place-holder">Escolha a espécie do animal
+                            </option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                        </select>
+                    </div>
+                    <div class="my-4">
+                        <label for="raca_animal" class="form-label">Raça</label>
+                        <input type="text" class="form-control" id="raca_animal" name="raca_animal"
+                            placeholder="Digite a raça do animal">
+                    </div>
+                    <div class="my-4">
+                        <label for="tipo_consulta" class="form-label">Tipo de agendamento</label>
+                        <select class="form-select" id="tipo_consulta" name="tipo_consulta">
+                            <option selected disabled hidden class="place-holder">Escolha o tipo de consulta
+                            </option>
+                            <option value="Banho">Banho</option>
+                            <option value="Tosa">Tosa</option>
+                            <option value="Tosa higiênica">Tosa higiênica</option>
+                            <option value="Vacina">Vacina</option>
+                            <option value="Exame de rotina">Exame de rotina</option>
+                        </select>
+                    </div>
+                    <div class="my-4">
+                        <label for="cpf_tutor" class="form-label">CPF do Tutor</label>
+                        <input type="text" class="form-control" id="cpf_tutor" name="cpf_tutor"
+                            placeholder="Digite o CPF do tutor">
+                    </div>
+                    <div class="row my-4 align-items-end">
+                        <div class="col-md-6">
+                            <label for="data" class="form-label">Data</label>
+                            <input type="date" class="form-control" id="data" name="data">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="hora" class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="hora" name="hora">
+                        </div>
+                    </div>
+                    <div class="alert alert-danger d-none" role="alert" id="error-message">
+                        Todos os campos precisam ser preenchidos corretamente!
+                    </div>
+                    <div class="alert alert-danger d-none" role="danger" id="horario-indisponivel-message">
+                        Não há veterinários disponíveis nesse horário. Escolha uma outra data!
+                    </div>
+                    <button type="submit" id='btAgendar' class="btn btn-custom w-100 py-2 mb-2">Agendar</button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <div id="toastConcluido" class="toast position-fixed bottom-0 end-0 m-3" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="toast-header text-white feito">
+            <strong class="me-auto">Feito!</strong>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"
+                aria-label="Fechar"></button>
+        </div>
+        <div class="toast-body">
+            Agendamento realizado ✅
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="{{ url_for('static', filename='script.js' ) }}"></script>
+
+</body>
+
+
+</html>

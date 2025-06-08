@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+html,
+body {
+    height: 100%;
+    font-family: 'poppins', sans-serif;
+    font-size: 16px;
+    /* Tamanho de fonte adequado */
+    line-height: 1.6;
+    /* Aumenta o espaçamento entre linhas */
+    color: #333;
+    /* Cor do texto */
+    margin: 0;
+    padding: 0;
+    background-color: #f3f5f7;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 1rem;
+
+}
+
+.btn-custom {
+    background: linear-gradient(45deg, #550366, #a805ad);
+    /* Gradiente roxo */
+    border: none;
+    /* Remove borda */
+    color: white;
+    /* Cor do texto */
+    transition: 0.3s;
+    /* Efeito suave */
+    font-weight: bold
+}
+
+.btn-custom:hover {
+    background: linear-gradient(45deg, #4f075e, #7f0483);
+    color: white
+}
+
+.btn-custom_2 {
+    background: #ffffff;
+    /* Gradiente roxo */
+    border: 3px solid rgb(168, 95, 236);
+    /* Remove borda */
+    color: rgb(56, 55, 55);
+    /* Cor do texto */
+    font-weight: bold
+}
+
+.btn-custom_2:hover {
+    background: rgb(168, 95, 236);
+    border: none;
+    color: white
+}
+
+#togglePassword {
+    color: #800080;
+    /* Cor roxa */
+    font-size: 1.2rem;
+    /* Tamanho do ícone */
+}
+
+#togglePassword2 {
+    color: #800080;
+    /* Cor roxa */
+    font-size: 1.2rem;
+    /* Tamanho do ícone */
+}
+
+.nav-item.mx-2 {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    /* Tamanho do ponto */
+    color: #4e024e;
+    /* Cor do ponto */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #4e024e;
+    transition: background-color 0.6s, opacity 0.3s;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #c40970 !important;
+    transition: background-color 0.6s, opacity 0.3s;
+}
+
+.dropdown-toggle::after {
+    content: none;
+    /* Remove a seta */
+}
+
+.dropdown-item-welcome {
+    color: #5e595e !important;
+}
+
+.logout-link:hover {
+    background-color: rgba(146, 38, 146, 0.3);
+    transition: background-color 0.3s, opacity 0.3s;
+    /* Transição suave */
+}
+
+.logout-link:active {
+    background-color: #922692;
+    color: white;
+}
+
+.card-body {
+    background-color: #ffffff !important;
+    border: none;
+    box-shadow: 0px 4px 6px rgba(146, 38, 146, 0.1);
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.area-escrita {
+    width: 510px;
+}
+
+#toastConcluido,
+.feito {
+    background-color: #550366;
+    /* Gradiente roxo */
+    color: white;
+    /* Cor do texto */
+    transition: 0.3s;
+    /* Efeito suave */
+    font-weight: bold
+}
+
+.btn-close-white {
+    filter: invert(1);
+    /* Deixa o botão de fechar branco */
+}
+
+#toastConcluido .toast-body {
+    border-top: 1px solid rgba(146, 144, 144, 0.1);
+    /* Linha cinza clara */
+}
+
+.text-purple {
+    color: #4e024e !important;
+}
+
+.table-container {
+    border-radius: 10px;
+    /* Cantos arredondados */
+    overflow: hidden;
+    /* Evita que os cantos arredondados sejam cortados */
+    /* Fundo branco */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.corpo {
+    background-color: white;
+}
+
+.table thead {
+    background-color: #550366;
+    /* Fundo roxo */
+    color: white;
+    /* Texto branco */
+}
+
+.consultas {
+    font-size: 32px;
+    /* Escolha o tamanho desejado */
+    /* Opcional: deixa o texto mais forte */
+}
+
+/* Esconde os ícones inicialmente */
+.actions i {
+    color: #9a9a9b;
+    /* Cinza (text-muted) */
+    transition: color 0.3s ease;
+    /* Adiciona uma transição suave para a troca de cor */
+}
+
+/* Quando o mouse passar sobre os ícones, a cor muda para roxa */
+.consulta-row:hover .actions i {
+    color: #550366;
+    /* Roxo */
+}
+
+.actions i:hover {
+    color: #d10b7f !important;
+}
+
+/* Tela escurecida */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Cor preta com opacidade */
+    display: none;
+    /* Inicialmente escondido */
+    z-index: 1040;
+    /* Posiciona atrás do modal */
+}
+
+.modal-content {
+    border-radius: 8px;
+    /* Bordas arredondadas para o modal */
+}
+
+/* Customize o botão, se necessário */
+.btn-close {
+    color: #333;
+}
+
+.btn-custom {
+    background: transparent;
+    border: none;
+    color: #555;
+    /* cinza escuro */
+    transition: color 0.3s ease;
+    box-shadow: none;
+    padding: 0.25rem 0.5rem;
+}
+
+#meuBotao {
+    background: transparent;
+    border: none;
+    color: #555;
+    transition: color 0.3s ease;
+    box-shadow: none;
+    padding: 0.25rem 0.5rem;
+}
+
+#meuBotao:hover,
+#meuBotao:focus {
+    color: #6f42c1;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Para estilizar a seta (caret) do dropdown */
+#meuBotao.dropdown-toggle::after {
+    border-top-color: #555;
+    transition: border-color 0.3s ease;
+}
+
+#meuBotao.dropdown-toggle:hover::after,
+#meuBotao.dropdown-toggle:focus::after {
+    border-top-color: #6f42c1;
+}
+
+
+#meuCarrossel,
+#meuCarrossel .carousel-inner,
+#meuCarrossel .carousel-item img {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+#meuCarrossel {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
