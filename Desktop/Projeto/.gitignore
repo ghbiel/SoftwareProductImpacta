@@ -1,0 +1,22 @@
+# Arquivos do sistema
+*.log
+*.tmp
+*.ini
+~$*
+
+# Pastas inúteis
+__pycache__/
+.env/
+venv/
+.vscode/
+.idea/
+
+# Documentos pessoais
+*.docx
+*.xlsx
+*.pdf
+
+# Ignorar tudo fora da pasta do projeto
+../../*
+
+
