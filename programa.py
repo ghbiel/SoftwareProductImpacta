@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 import re
 from flask_mail import Mail, Message
 import random
+from datetime import date, datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@localhost/clinicaVivaPet'
@@ -140,13 +141,46 @@ def logar():
 
 @app.route('/home')
 def home():
+    
     if 'usuario_id' not in session:
         return redirect(url_for('index')) 
+    
+    hoje = date.today()
+    agora = datetime.now()
+
+
+    qtd_consultas_hoje = db.session.query(Consulta) \
+    .filter(Consulta.data_consulta == hoje) \
+    .count()
+    
+    qtd_consultas_realizadas = db.session.query(Consulta) \
+    .filter(
+        ((Consulta.data_consulta == hoje) & (Consulta.hora_consulta < agora.time()))
+    ) \
+    .count()
+    
+    qtd_consultas_pendentes = db.session.query(Consulta) \
+    .filter(
+        ((Consulta.data_consulta == hoje) & (Consulta.hora_consulta >= agora.time()))
+    ) \
+    .count()
+    
+ 
+    proximas_consultas = db.session.query(Consulta) \
+    .filter(
+        (Consulta.data_consulta > agora.date()) |
+        ((Consulta.data_consulta == agora.date()) & (Consulta.hora_consulta > agora.time()))
+    ) \
+    .order_by(Consulta.data_consulta.asc(), Consulta.hora_consulta.asc()) \
+    .limit(2) \
+    .all()
+
+    # Filtra próximas consultas (de hoje pra frente)
     
     usuario_id = session['usuario_id']
     usuario = Usuario.query.get(usuario_id)
     if usuario:
-        return render_template("Home.html", user_name=usuario.nome.split()[0])
+        return render_template("Home.html", qtd_consultas_pendentes=qtd_consultas_pendentes,qtd_consultas_realizadas=qtd_consultas_realizadas, user_name=usuario.nome.split()[0], qtd_consultas_hoje = qtd_consultas_hoje, proximas_consultas = proximas_consultas)
     
 @app.route('/marcar-agendamento')
 def marcar_agendamento():
@@ -487,8 +521,7 @@ def confirmar_consulta():
         return jsonify({"mensagem": "E-mail enviado com sucesso!"})
     except Exception as e:
         return jsonify({"mensagem": "Erro ao enviar e-mail.", "erro": str(e)}), 500
-    
-    
+
 if __name__ == '__main__':
     app.run(debug=True)
     

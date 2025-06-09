@@ -93,6 +93,61 @@
             </div>
         </div>
     </div>
+    <div class="container mt-4" style="max-width: 1300px;">
+        <div class="d-flex justify-content-between gap-4">
+
+            <!-- CONSULTAS DE HOJE -->
+            <div style="max-width: 600px; width: 100%; background-color: #f8f9fa; padding: 20px; border-radius: 15px;">
+                <h5 class="mb-3">Consultas de hoje</h5>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p class="mb-1">Total</p>
+                        <p class="display-4 fw-bold" style="color: #6f42c1;">{{qtd_consultas_hoje}}</p>
+                    </div>
+                    <div>
+                        <p class="mb-1">Realizadas</p>
+                        <p class="display-4 fw-bold" style="color: #6f42c1;">{{qtd_consultas_realizadas}}</p>
+                    </div>
+                    <div>
+                        <p class="mb-1">Pendentes</p>
+                        <p class="display-4 fw-bold" style="color: #6f42c1;">{{qtd_consultas_pendentes}}</p>
+                    </div>
+                </div>
+                <hr style="border-top: 4px solid #6f42c1; width: 100%; margin-left: 0; margin-top: 10px;">
+            </div>
+
+            <!-- TABELA DAS PRÓXIMAS CONSULTAS -->
+            <div style="width: 100%;">
+                <h5 class="mb-3">Próximas consultas</h5>
+                <div class="table-container">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Veterinário</th>
+                                <th>Tutor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for consulta in proximas_consultas %}
+                            <tr>
+                                <td>{{ consulta.nome_animal }}</td>
+                                <td>{{ consulta.data_consulta.strftime('%d/%m/%Y') }}</td>
+                                <td>{{ consulta.hora_consulta.strftime('%H:%M') }}</td>
+                                <td>{{ consulta.veterinario }}</td>
+                                <td>{{ consulta.nome_tutor }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 
 
